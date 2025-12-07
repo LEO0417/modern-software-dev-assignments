@@ -19,6 +19,7 @@ wheels/
 .installed.cfg
 *.egg
 PIPFILE.lock
+slides_images/
 
 # Database
 *.db
