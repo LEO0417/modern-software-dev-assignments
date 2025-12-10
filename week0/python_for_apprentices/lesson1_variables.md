@@ -1,186 +1,182 @@
-# Lesson 1: The Atomic Theory (万物基石 - 变量与类型详解) ⚛️ (口播稿)
+# Lesson 1: Orbit Survival (轨道求生 - 变量与生还) 🛰️ (口播稿)
 
-> **场景建议**：背景音从早晨的鸟叫声开始，转为轻松的课堂氛围。
+> **场景建议**：背景音是急促的警报声，然后转为沉重的呼吸声和仪器运转声。
 > **预计时长**：25 分钟
-> **角色**：领航员 (Instructor)
+> **角色**：领航员 (Instructor) - 语气严肃，带有紧迫感。
 
 ---
 
-## 0. 开场 (Opening) - 2 min
+## 0. 紧急开场 (Emergency Opening) - 3 min
 
 **领航员**：
-各位学徒，早上好。
-今天，我们要进行长达 25 分钟的深度训练。
-请给自己倒一杯咖啡，或者打开你最喜欢的背景音乐。
+(拍打麦克风)
+这里是控制中心。所有学徒，立即汇报状态。
 
-我们要讨论的话题听起来很枯燥：**Variables (变量)** 和 **Data Types (数据类型)**。
-在很多教程里，这只是一页 PPT。
-但在 **Stanford Modern Software Development Course**，这是万物的基石。
+听着，这不是演习。
+我们的飞船 `Antigravity` 号刚刚遭遇了太阳风暴。主控电脑重启了。
+现在，所有的仪表盘都是黑的。
+你不再是在宽敞明亮的教室里学习 Python 语法。
+你现在就在**轨道上**。你需要手动输入指令来维持飞船的生命维持系统。
 
-如果你搞不清“字符串”和“数字”的区别，你的 AI 就会产生幻觉。
-如果你不会用 f-strings，你就无法构建 RAG 系统的 Prompt。
-
-不仅要会写，还要**懂**。让我们开始拆解世界的原子。
+在这个高度，哪怕一个小数点的错误，都会让我们化为灰烬。
+我们必须重新定义周围的一切。
+在这里，变量不仅仅是内存里的盒子。
+**Variables are Life.** (变量即生命)。
 
 ---
 
-## 1. 变量：贴标签的艺术 (The Variable) - 3 min
+## 1. 启动手动控制台 (Integers as Crew) - 8 min
 
 **领航员**：
-首先，什么是变量？
-不要去背计算机科学的定义“内存地址的引用”。太抽象了。
+首先，我们需要通过手动指令清点幸存人数。
+请立刻接管控制台。
 
-想象你正在搬家。你有一堆箱子。
-如果你把所有的东西都乱塞进箱子，也不写名字。到了新家，你想找牙刷，你得把所有箱子拆开。
-这就是**没有变量的代码**。
+**(Step 1: The Terminal)**
+1.  **打开控制面板**：点击 IDE 顶部的 "Terminal" -> "New Terminal"。
+2.  **激活环境**：我们必须进入那个在 Infants 阶段建立的安全屋。
+    输入：`conda activate ai_course`
+    看到 `(ai_course)` 出现，才说明你安全了。
+3.  **进入 Python 交互模式**：
+    输入：`python`
+    看到 `>>>` 符号，说明你已经连接上了飞船的核心引擎。
 
-**Code Example**:
+**(Step 2: The REPL Check)**
+我们需要确认船员数量。在 Python 里，船员必须是 **Integer (整数)**，因为人是不可分割的。
+在 `>>>` 后面输入：
 ```python
-print(100 * 0.8)  # 这是什么？谁知道这是打折后的价格还是体重？
+crew_count = 5
+print(crew_count)
 ```
+你会立刻看到输出 `5`。
 
 **领航员**：
-变量，就是给箱子**贴标签**。
+好，系统有反应了。
+但如果我们要检查几十项数据（燃料、氧气、护盾），这样一行行敲太慢了。
+如果敲错一行，就要全部重来。
+我们没有时间浪费。
+
+**(Step 3: The Script)**
+我们要创建一个**自动化脚本**。
+1.  在左侧 Explorer (资源管理器) 右键及新建文件，命名为 `orbit_survival.py`。
+2.  以后我们所有的指令，都写在这个文件里。
+
+现在，把刚才的指令写入文件：
 ```python
-price = 100
-discount_rate = 0.8
-final_price = price * discount_rate
-print(final_price)
+# Orbit Survival Script
+crew_count = 5
+print(f"Crew Check: {crew_count}")
 ```
-现在，傻子都知道你在算什么。
-在 Python 里，贴标签超级简单：`标签名 = 内容`。
-**Anti-gravity AI 提示**：标签名最好用小写字母，中间用下划线连起来 (snake_case)。这是 Python 的行规。
+写完后，在 Terminal 里按下 `Ctrl+Z` (Win) 或 `Ctrl+D` (Mac) 退出 Python 模式（回到 `(ai_course)`）。
+然后运行脚本：
+`python orbit_survival.py`
+
+看到结果了吗？这才是 Pilot 的工作方式。
+接下来的所有计算，我们都在这个脚本里完成。
+
+**(Step 4: The Critical Error)**
+回到代码里。为什么必须是整数？
+因为如果你输入 `5.5`，系统会认为有一半个船员挂在外面。这会导致生命维持系统报错。
+我们来试一次**受控的错误**。
+把 `5` 改成 `5.5`，再次运行脚本。
+问右边的 AI 副驾驶 (Right Panel)：
+> "Why is it dangerous to use a float for crew count in a life support system?"
+
+AI 会告诉你：逻辑错误。这也是作为指挥官的第一课：**选择正确的数据类型，是对生命的尊重。**
 
 ---
 
-## 2. 字符串：文本的容器 (Strings) - 5 min
+## 2. 浮点数：生死的精度 (Floats as Fuel) - 6 min
 
 **领航员**：
-好，现在我们来看看箱子里能装什么。
-第一种，也是最常见的一种：**String (字符串)**。
+好，人齐了。接下来看燃料。
+这就完全不同了。
+燃料不仅可以分割，而且必须极其精确。
+如果你只告诉引擎剩下 `90` 吨燃料，而实际上是 `90.000000001` 吨。
+那微小的误差在几百万公里的航程中，会让你错过火星轨道。
 
-也就是 **Text (文本)**。
-在 Python 眼里，只要被**引号**包起来的东西，都是字符串。
-
-**(Step 1: Quotes)**
+**(Step 2: The Fuel Gauge)**
+我们需要 **Float (浮点数)**。
 ```python
-name = "Leo"   # 双引号，标准
-city = 'Beijing' # 单引号，也行
-message = "I'm coming" # 如果里面有单引号，外面就得用双引号
+fuel_level = 98.7564
+burn_rate = 1.2
 ```
-
 **领航员**：
-在 Stanford 课程里，字符串是绝对的主角。
-为什么？因为 **LLM (大语言模型)** 吃的就是 Text。
-你的 Prompt 是字符串，AI 回复的也是字符串。
-
-**易错点警告**：
-`"100"` 和 `100` 是不一样的。
-`"100"` 是一串字符，没有任何数学意义。它就像是写在纸上的“一百”两个字。
-
----
-
-## 3. 数字：整数与浮点 (Integers & Floats) - 5 min
-
-**领航员**：
-第二种，**Numbers (数字)**。
-这时候，引号消失了。
-
-Python 把数字分成了两派：
-1.  **Integers (整数)**：没有小数点的。
-    `level = 10`
-    `count = -5`
-    通常用来计数 (Counting)。
-
-2.  **Floats (浮点数)**：带小数点的。
-    `price = 9.99`
-    `pi = 3.14159`
-    通常用来测量 (Measuring)。
-
-**领航员**：
-为什么要在意这个？
-因为精度的陷阱。
-在金融计算或者飞船轨迹计算中，浮点数可能会有极微小的误差。
-但在 Apprentice 阶段，你只需要知道：**如果不带小数点，就是 int；带了，就是 float。**
-
-试运行一下：`type(10)` vs `type(10.0)`。
-在中间的 Editor 里试一下，看右边的 AI 怎么解释。
-
----
-
-## 4. 布尔值：逻辑的开关 (Booleans) - 4 min
-
-**领航员**：
-第三种，最简单，但也最重要：**Boolean (布尔值)**。
-
-它只有两个值：
-`True` (真)
-`False` (假)
-
-**注意首字母大写！**
-它就像是飞船上的一个个**开关**。
-`is_engine_on = True`
-`has_error = False`
-
-在未来的 Lesson 4 (逻辑控制) 中，所有的 `if/else` 判断，归根结底都是在看这个布尔值是 True 还是 False。
-
----
-
-## 5. f-string：万能胶水 (The f-string) - 5 min
-
-**领航员**：
-最后，我们要讲一个魔法。
-我们有了字符串，有了数字，有了开关。
-怎么把它们拼成一句话，发给 AI 或者用户？
-
-在旧时代，我们用 `+` 号拼凑：
-`"Hello " + name + ", level " + str(level)`
-太丑了。而且容易错。
-
-**领航员**：
-拥抱 **f-string** 吧。
-只要在引号前面加一个小写的 `f`。
-你就可以在字符串里挖坑，填入任何变量。
-
-**(Step 2: f-string Magic)**
+现在，试着算一下我们还能飞多久。
 ```python
-name = "Leo"
-level = 5
-score = 98.5
+# 计算剩余时间
+flight_hours = fuel_level / burn_rate
+print(f"Time remaining: {flight_hours} hours")
+```
+看着那个长长的小数点。
+那就是你的**命**。
+如果你把它四舍五入变成了 `int`，你就把那一小时的求生时间扔掉了。
+在 Stanford Course 的科学计算里，这种精度意识至关重要。
 
-# 看着这个优雅的句子
-report = f"Pilot {name} is at Level {level}. Current Score: {score}"
+---
+
+## 3. 布尔值：系统的脉搏 (Booleans as System Status) - 4 min
+
+**领航员**：
+最后，我们需要知道飞船是不是还活着。
+**Boolean (布尔值)**。
+它只有两个状态：`True` (生) 或 `False` (死)。
+
+**(Step 3: System Check)**
+```python
+is_oxygen_stable = True
+has_hull_breach = False
+```
+想象一下，如果这里弄反了。
+`has_hull_breach = True` (船壳破裂 = 真)。
+那红灯就会疯响。
+所有的自动防御系统（我们将在 Lesson 4 编写它们）都依赖这几个简单的 True/False 来决定是否封锁舱门。
+
+---
+
+## 4. f-string：最后遗言 (The Black Box Record) - 5 min
+
+**领航员**：
+如果——我是说如果——我们没能挺过去。
+我们需要留下黑匣子记录。
+我们需要把刚才定义的那些散乱的数据（人数、燃料、状态）拼成一条完整的信息，发送回地球。
+
+在旧时代，你会手忙脚乱地用加号拼凑字符串，然后因为忘记把 `int` 转成 `string` 而导致发报失败（Crash）。
+但我们没有时间报错。
+我们要用 **f-string**。
+
+**(Step 4: The Report)**
+```python
+report = f"""
+== EMERGENCY BROADCAST ==
+Crew Alive: {crew_count}
+Fuel Remaining: {fuel_level}
+Oxygen Stable: {is_oxygen_stable}
+Status: CRITICAL
+"""
 print(report)
 ```
-
 **领航员**：
-这不仅仅是打印。
-在 Week 1 构建 RAG 时，你会这样写 Prompt：
-```python
-user_question = "What is the weather?"
-context = "It is sunny."
-
-prompt = f"""
-Context: {context}
-Question: {user_question}
-Answer:
-"""
-```
-看清楚了吗？**f-string 是我们在 Python 里构建 Prompt 的核心工具。**
-一定要练熟它。
+看着屏幕上打印出的这段话。
+它不仅仅是一段文本。它是我们存在的证明。
+这也是你们未来构建 **AI Prompts** 的雏形。
+你必须学会如何把冰冷的数据，嵌入到人类的语言框架中。
 
 ---
 
-## 6. 总结 (Closing) - 1 min
+## 5. 总结 (Debrief) - 2 min
 
 **领航员**：
-呼... 漫长的 25 分钟。
-但我们打下了最坚实的地基。
+警报暂时解除。
+我们重新定义了飞船的状态。
+*   Integers 是我们的战友。
+*   Floats 是我们的燃料。
+*   Booleans 是我们的脉搏。
 
-今天如果不理解 `String` 和 `Int` 的区别，明天你的计算器就会报错。
-今天如果不掌握 `f-string`，后天你就写不出动态的 Prompt。
+但现在，坐在你右边的那个 AI 副驾驶（Agent），它刚才一直很安静。
+下一节课，我们要激活它。
+但记住，它不是神。它只是一个刚刚出厂的、有点傻的**翻译官**。
+我们需要学会如何跟它说话，它才不会听不懂指令把我们害死。
+Prepare for Lesson 1.5: **The Universal Translator**.
 
-下一节课 (Lesson 2)，我们将学习如何把这些操作打包成 **Function (机器)**。
-
-**Analysis complete. Atoms stabilized.**
-(分析完毕。原子已稳定。)
+**Orbit stable. Stand by.**
+(轨道稳定。待命。)
