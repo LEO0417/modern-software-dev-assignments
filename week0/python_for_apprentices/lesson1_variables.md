@@ -70,6 +70,8 @@ print(f"Crew Check: {crew_count}")
 然后运行脚本：
 `python orbit_survival.py`
 
+如何运行脚本请查看infant课程第二课「登机」
+
 看到结果了吗？这才是 Pilot 的工作方式。
 接下来的所有计算，我们都在这个脚本里完成。
 
@@ -125,11 +127,15 @@ print(f"Time remaining: {flight_hours} hours")
 ```python
 is_oxygen_stable = True
 has_hull_breach = False
+
+print(f"Oxygen System: {is_oxygen_stable}")
+print(f"Hull Breach Alert: {has_hull_breach}")
 ```
 想象一下，如果这里弄反了。
 `has_hull_breach = True` (船壳破裂 = 真)。
 那红灯就会疯响。
 所有的自动防御系统（我们将在 Lesson 4 编写它们）都依赖这几个简单的 True/False 来决定是否封锁舱门。
+运行脚本，确认系统状态。
 
 ---
 
