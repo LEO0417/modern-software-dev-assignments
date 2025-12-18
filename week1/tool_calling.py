@@ -101,10 +101,10 @@ def extract_tool_call(text: str) -> Dict[str, Any]:
 
 def run_model_for_tool_call(system_prompt: str) -> Dict[str, Any]:
     response = chat(
-        model="llama3.1:8b",
+        model="gemini-3-flash-preview:cloud",
         messages=[
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": "Call the tool now."},
+            {"role": "user", "content": "现在调用该工具。"},
         ],
         options={"temperature": 0.3},
     )

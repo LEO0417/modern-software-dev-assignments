@@ -12,9 +12,9 @@ YOUR_SYSTEM_PROMPT = ""
 
 
 USER_PROMPT = """
-Solve this problem, then give the final answer on the last line as "Answer: <number>".
+解决这个问题，然后在最后一行以 "Answer: <数字>" 的格式给出最终答案。
 
-what is 3^{12345} (mod 100)?
+计算 3^{12345} (mod 100) 的值是多少？
 """
 
 
@@ -48,7 +48,7 @@ def test_your_prompt(system_prompt: str) -> bool:
     for idx in range(NUM_RUNS_TIMES):
         print(f"Running test {idx + 1} of {NUM_RUNS_TIMES}")
         response = chat(
-            model="llama3.1:8b",
+            model="gemini-3-flash-preview:cloud",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": USER_PROMPT},

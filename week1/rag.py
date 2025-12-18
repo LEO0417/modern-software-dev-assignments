@@ -31,8 +31,8 @@ def load_corpus_from_files(paths: List[str]) -> List[str]:
 CORPUS: List[str] = load_corpus_from_files(DATA_FILES)
 
 QUESTION = (
-    "Write a Python function `fetch_user_name(user_id: str, api_key: str) -> str` that calls the documented API "
-    "to fetch a user by id and returns only the user's name as a string."
+    "编写一个 Python 函数 `fetch_user_name(user_id: str, api_key: str) -> str`，"
+    "调用文档中的 API 来获取用户信息，并仅以字符串形式返回用户的姓名。"
 )
 
 
@@ -63,16 +63,16 @@ def make_user_prompt(question: str, context_docs: List[str]) -> str:
     if context_docs:
         context_block = "\n".join(f"- {d}" for d in context_docs)
     else:
-        context_block = "(no context provided)"
+        context_block = "(未提供上下文)"
     return (
-        f"Context (use ONLY this information):\n{context_block}\n\n"
-        f"Task: {question}\n\n"
-        "Requirements:\n"
-        "- Use the documented Base URL and endpoint.\n"
-        "- Send the documented authentication header.\n"
-        "- Raise for non-200 responses.\n"
-        "- Return only the user's name string.\n\n"
-        "Output: A single fenced Python code block with the function and necessary imports.\n"
+        f"上下文 (仅使用此信息):\n{context_block}\n\n"
+        f"任务: {question}\n\n"
+        "要求:\n"
+        "- 使用文档中记录的 Base URL 和端点。\n"
+        "- 发送文档中记录的身份验证头。\n"
+        "- 对于非 200 的响应抛出异常。\n"
+        "- 仅返回用户姓名字符串。\n\n"
+        "输出: 一个包含该函数和必要导入的 Python 代码块。\n"
     )
 
 
@@ -97,7 +97,7 @@ def test_your_prompt(system_prompt: str, context_provider: Callable[[List[str]],
     for idx in range(NUM_RUNS_TIMES):
         print(f"Running test {idx + 1} of {NUM_RUNS_TIMES}")
         response = chat(
-            model="llama3.1:8b",
+            model="gemini-3-flash-preview:cloud",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},

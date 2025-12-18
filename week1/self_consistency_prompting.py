@@ -12,11 +12,11 @@ NUM_RUNS_TIMES = 5
 YOUR_SYSTEM_PROMPT = ""
 
 USER_PROMPT = """
-Solve this problem, then give the final answer on the last line as "Answer: <number>".
+解决这个问题，然后在最后一行以 "Answer: <数字>" 的格式给出最终答案。
 
-Henry made two stops during his 60-mile bike trip. He first stopped after 20
-miles. His second stop was 15 miles before the end of the trip. How many miles
-did he travel between his first and second stops?
+亨利在他的 60 英里骑行途中停了两次。他第一次停是在骑了 20 英里后。
+他的第二次停是在距离旅行结束还有 15 英里的地方。
+他在第一次和第二次停之间行驶了多少英里？
 """
 
 EXPECTED_OUTPUT = "Answer: 25"
@@ -48,7 +48,7 @@ def test_your_prompt(system_prompt: str) -> bool:
     for idx in range(NUM_RUNS_TIMES):
         print(f"Running test {idx + 1} of {NUM_RUNS_TIMES}")
         response = chat(
-            model="llama3.1:8b",
+            model="gemini-3-flash-preview:cloud",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": USER_PROMPT},

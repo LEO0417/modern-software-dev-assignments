@@ -29,9 +29,17 @@ ollama -v
 
 Before running the test scripts, make sure you have the following models pulled. You only need to do this once (unless you remove the models later):
 ```bash
-ollama run mistral-nemo:12b
-ollama run llama3.1:8b
+ollama pull ministral-3:3b
+ollama pull gemini-3-flash-preview:cloud
 ```
+And then you need to run the model
+```bash
+ollama run ministral-3:3b
+ollama run gemini-3-flash-preview:cloud
+```
+if you don't have the model, it will pull it from the internet
+
+The `ministral-3:3b` model runs locally, offering speed and stability, though it is less powerful than cloud-based alternatives. `gemini-3-flash-preview:cloud` is a cloud-hosted model released on December 17, 2025, making it the most recent and potentially most powerful model available via Ollama.
 
 ## Techniques and source files
 - K-shot prompting — `week1/k_shot_prompting.py`

@@ -10,7 +10,7 @@ NUM_RUNS_TIMES = 5
 YOUR_SYSTEM_PROMPT = ""
 
 USER_PROMPT = """
-Reverse the order of letters in the following word. Only output the reversed word, no other text:
+将下列单词中的字母顺序反转。只输出反转后的单词，不要包含其他任何文本：
 
 httpstatus
 """
@@ -26,7 +26,7 @@ def test_your_prompt(system_prompt: str) -> bool:
     for idx in range(NUM_RUNS_TIMES):
         print(f"Running test {idx + 1} of {NUM_RUNS_TIMES}")
         response = chat(
-            model="mistral-nemo:12b",
+            model="ministral-3:3b",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": USER_PROMPT},

@@ -9,9 +9,8 @@ load_dotenv()
 NUM_RUNS_TIMES = 1
 
 SYSTEM_PROMPT = """
-You are a coding assistant. Output ONLY a single fenced Python code block that defines
-the function is_valid_password(password: str) -> bool. No prose or comments.
-Keep the implementation minimal.
+你是一个编程助手。仅输出一个包含函数 is_valid_password(password: str) -> bool 定义的 Python 代码块。
+不要包含任何文字说明或注释。实现过程保持简洁。
 """
 
 # TODO: Fill this in!
@@ -81,10 +80,10 @@ def evaluate_function(func: Callable[[str], bool]) -> Tuple[bool, List[str]]:
 
 def generate_initial_function(system_prompt: str) -> str:
     response = chat(
-        model="llama3.1:8b",
+        model="gemini-3-flash-preview:cloud",
         messages=[
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": "Provide the implementation now."},
+            {"role": "user", "content": "现在提供实现。"},
         ],
         options={"temperature": 0.2},
     )
@@ -108,7 +107,7 @@ def apply_reflexion(
     reflection_context = build_context(prev_code, failures)
     print(f"REFLECTION CONTEXT: {reflection_context}, {reflexion_prompt}")
     response = chat(
-        model="llama3.1:8b",
+        model="gemini-3-flash-preview:cloud",
         messages=[
             {"role": "system", "content": reflexion_prompt},
             {"role": "user", "content": reflection_context},
