@@ -1,66 +1,12 @@
-# week1 课程（下）：进阶提示词工程
+# week1 课程（下）：进阶提示词工程（2）
 
-在本节课中，我们将深入探讨更高级的提示词技术，包括思维链、工具调用、自洽性、RAG 和自我反思。我们将继续使用斯坦福 week1 提供的脚本进行实践。
+在本节课中，我们将基于 W1D6 的 K-shot 基础，深入探讨更高级的提示词架构，包括引导模型思考、赋予模型工具以及构建自我修正系统。
 
 ---
 
 ## 1. 技术进阶与源码讲解
 
-### 1.1 K-shot Prompting (少样本提示)
-**源码文件:** `week1/k_shot_prompting.py`
-
-#### 1.1.1 核心概念
-K-shot（或 Few-shot）提示是指在提示词中提供 $K$ 个示例。这对于任务定义模糊或需要特定输出格式的情况非常有效。模型通过“模仿”示例来理解预期行为。
-
-#### 1.1.2 脚本初始化与环境配置
-```python
-import os
-from dotenv import load_dotenv
-from ollama import chat
-
-load_dotenv()
-NUM_RUN_TIMES = 5
-```
-**详解:**
-- **`load_dotenv`**: 加载运行环境。
-- **`NUM_RUN_TIMES`**: 设置重复测试次数，以验证提示词在不同生成中的稳健性。
-
-#### 1.1.3 任务定义与核心提示词
-```python
-# TODO: 在这里填入你的系统提示词！
-YOUR_SYSTEM_PROMPT = ""
-
-USER_PROMPT = """
-将下列单词中的字母顺序反转。只输出反转后的单词，不要包含其他任何文本：
-httpstatus
-"""
-EXPECTED_OUTPUT = "sutatsptth"
-```
-**详解:**
-- **任务**: 反转字符串字母。
-- **K-shot 策略**: 在 `YOUR_SYSTEM_PROMPT` 中不仅要描述任务，还要给出示例，例如：`示例：apple -> elppa`。
-
-#### 1.1.4 测试循环与比对逻辑
-```python
-def test_your_prompt(system_prompt: str) -> bool:
-    response = chat(
-        model="ministral-3:3b",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": USER_PROMPT},
-        ],
-        options={"temperature": 0.5},
-    )
-    if response.message.content.strip() == EXPECTED_OUTPUT:
-        return True
-```
-**详解:**
-- **`chat` 调用**: 使用 `ministral-3:3b` 小模型进行测试。
-- **`.strip()`**: 清洗输出文本，确保匹配过程不受白字符干扰。
-
----
-
-### 1.2 Chain-of-thought (思维链, CoT)
+### 1.1 Chain-of-thought (思维链, CoT)
 **源码文件:** `week1/chain_of_thought.py`
 
 #### 1.1.1 核心概念
